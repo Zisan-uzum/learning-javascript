@@ -138,3 +138,18 @@ function pow(x,y, ...extra){
     console.log(total);
 }
 pow(4,5,6,7,8,9);
+
+
+/*const _ = {}
+_.map = function(list,callback){
+    let result = [];
+    for(var i= 0; i<list.length; i++){
+        result.push(callback(list[i]));
+    }
+    return result;
+}
+
+_.map([1,2,3], function(number){
+    return number * 3;
+});
+*/
