@@ -153,3 +153,17 @@ _.map([1,2,3], function(number){
     return number * 3;
 });
 */
+
+const _ = {}
+
+_.map = function(list,callback){
+    let result = [];
+    list.forEach(element => {
+        result.push(callback(element));
+    });
+    return result;
+}
+
+_.map([1,2,3], function(number){
+    return number * 3;
+});
