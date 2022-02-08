@@ -140,11 +140,13 @@ function pow(x,y, ...extra){
 pow(4,5,6,7,8,9);
 
 
+// map and example of that
+
 /*const _ = {}
 _.map = function(list,callback){
     let result = [];
     for(var i= 0; i<list.length; i++){
-        result.push(callback(list[i]));
+        result.push(callback(list[i])); 
     }
     return result;
 }
@@ -154,7 +156,9 @@ _.map([1,2,3], function(number){
 });
 */
 
-const _ = {}
+// map and example of that with forEach
+
+/*const _ = {}
 
 _.map = function(list,callback){
     let result = [];
@@ -166,4 +170,78 @@ _.map = function(list,callback){
 
 _.map([1,2,3], function(number){
     return number * 3;
-});
+});*/
+
+// firstly filter the data and map to convert array of strings from array of objects
+
+const _ = {};
+
+
+_.map = function(list,callback){
+    let result = [];
+    list.forEach(element => {
+        result.push(callback(element));
+    });
+    return result;
+}
+
+_.filter = function(list, func){
+    // create result array
+    // loop through array
+    // check if func is true
+    //if its true add to result array
+    //return to result array
+    let result = [];
+    /*list.forEach(element => {
+        if(func(element)){
+            result.push(element);
+        }
+    });*/
+
+
+    for(let i = 0; i< list.length; i++){
+        if(func(list[i], i, list)){
+             // to be more generic send three paramater cuz dont know what function requires as paramater
+            result.push(list[i]);
+        }
+    }
+    return result;
+}
+
+const videoData = [ // array of two object
+    {
+        name: 'Miss Scarlet',
+        present: true,
+        rooms: [
+            {kitchen: false},
+            {ballroom: false},
+            {conservatory: false},
+            {'dining room': false},
+            {'billiard room': false},
+            {library: false}
+        ]
+    },
+    {
+        name: 'Mister Johhnos',
+        present: false,
+        rooms: [
+            {kitchen: false},
+            {ballroom: false},
+            {conservatory: false},
+            {'dining room': false},
+            {'billiard room': false},
+            {library: false}
+        ]
+    }
+];
+ 
+const suspectObjects = _.filter(videoData, function(objects){
+    return objects.present;
+});  // returns array of objects 
+
+const suspectNames = _.map(suspectObjects, suspect => {return suspect.name});
+
+
+
+
+
