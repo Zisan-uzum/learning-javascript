@@ -241,7 +241,13 @@ const suspectObjects = _.filter(videoData, function(objects){
 
 const suspectNames = _.map(suspectObjects, suspect => {return suspect.name});
 
+const func = function(){
+    const arr = Array.prototype.slice.call(arguments);
+    arr.push(1);
+    return arr.join(" ");
+}
 
+func(1,2,3);
 
 
 
